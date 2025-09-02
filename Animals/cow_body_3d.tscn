@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://fjh8u0oig76u"]
+[gd_scene load_steps=4 format=3 uid="uid://fjh8u0oig76u"]
+
+[ext_resource type="Script" path="res://Cow-Manager/Animals/cow_body_3d.gd" id="1_supvf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_iv2dl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tk1m3"]
 
 [node name="CowBody3D" type="CharacterBody3D"]
+script = ExtResource("1_supvf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_iv2dl")

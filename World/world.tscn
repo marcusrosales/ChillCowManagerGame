@@ -45,5 +45,6 @@ mesh = SubResource("BoxMesh_b2myr")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.910453, 0.413613, 0, -0.413613, 0.910453, 0, 3.94022, 7.08799)
 
-[node name="CowBody3D" parent="." instance=ExtResource("1_38mcv")]
+[node name="CowBody3D" parent="." node_paths=PackedStringArray("RoamRegion") instance=ExtResource("1_38mcv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10716, 0)
+RoamRegion = NodePath("../Land/NavigationRegion3D")
