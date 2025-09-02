@@ -1,2 +1,0 @@
-# Cow Manager
-
