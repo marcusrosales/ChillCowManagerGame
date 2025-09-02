@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Animals" load_steps=2 format=3 uid="uid://ci34ctfh1u1oi"]
+
+[ext_resource type="Script" path="res://Cow-Manager/Resources/animals.gd" id="1_ji7vr"]
+
+[resource]
+script = ExtResource("1_ji7vr")
+health = 100
+speed = 5

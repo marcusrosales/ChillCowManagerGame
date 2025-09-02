@@ -1,9 +1,9 @@
 extends CharacterBody3D
+
+@export var Animal: Animals
+
 @onready var CowBrain = $NavigationAgent3D
 @export var RoamRegion: NavigationRegion3D
-
-var speed = 50
-var health = 100
 
 func getRandomPoint():
 	var random_pos := Vector3.ZERO
@@ -19,6 +19,6 @@ func _physics_process(delta):
 	var local_des = destination- global_position
 	var direction = local_des
 	
-	velocity = direction * speed * delta
+	velocity = direction * Animal.speed * delta
 	
 	move_and_slide()

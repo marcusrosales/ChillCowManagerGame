@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://fjh8u0oig76u"]
+[gd_scene load_steps=5 format=3 uid="uid://fjh8u0oig76u"]
 
 [ext_resource type="Script" path="res://Cow-Manager/Animals/cow_body_3d.gd" id="1_supvf"]
+[ext_resource type="Resource" uid="uid://ci34ctfh1u1oi" path="res://Cow-Manager/Resources/Cattle.tres" id="2_1ee22"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_iv2dl"]
 
@@ -8,6 +9,7 @@
 
 [node name="CowBody3D" type="CharacterBody3D"]
 script = ExtResource("1_supvf")
+Animal = ExtResource("2_1ee22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_iv2dl")
