@@ -12,6 +12,7 @@ func getRandomPoint():
 	CowBrain.set_target_position(random_pos)
 
 func _ready():
+	Animal.roam(Animal.speed)
 	getRandomPoint()
 
 func _physics_process(delta):
