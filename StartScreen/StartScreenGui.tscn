@@ -14,7 +14,7 @@ offset_bottom = -339.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="StartGame" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,4 +34,4 @@ script = ExtResource("1_j03xg")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 339)
 
-[connection signal="pressed" from="Button" to="Button" method="press"]
+[connection signal="pressed" from="StartGame" to="StartGame" method="press"]

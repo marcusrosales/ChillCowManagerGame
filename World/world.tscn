@@ -1,26 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://o8inn5spfgn8"]
+[gd_scene load_steps=10 format=3 uid="uid://o8inn5spfgn8"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wgq2s"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[ext_resource type="Script" path="res://NavigationRegion3D.gd" id="1_7xwec"]
+[ext_resource type="Script" path="res://cow.gd" id="2_gbamu"]
 
-[sub_resource type="Sky" id="Sky_s4awk"]
-sky_material = SubResource("ProceduralSkyMaterial_wgq2s")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rtd3h"]
+sky_horizon_color = Color(0.617857, 0.659449, 0.703499, 1)
+ground_bottom_color = Color(0.0864261, 0.183795, 0.263995, 1)
+ground_horizon_color = Color(0.617857, 0.659449, 0.703499, 1)
 
-[sub_resource type="Environment" id="Environment_y5fr5"]
+[sub_resource type="Sky" id="Sky_kqwd6"]
+sky_material = SubResource("ProceduralSkyMaterial_rtd3h")
+
+[sub_resource type="Environment" id="Environment_rkgh2"]
 background_mode = 2
-sky = SubResource("Sky_s4awk")
+sky = SubResource("Sky_kqwd6")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_bdiu3"]
+vertices = PackedVector3Array(-24.5, 0.5, -26.901, -24.5, 0.5, 26.849, 24.5, 0.5, 26.849, 24.5, 0.5, -26.901)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mqqh4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g78yx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_de1ay"]
+
 [node name="World" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.995587, -0.0938477, 0, 0.0938477, 0.995587, 0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_y5fr5")
+environment = SubResource("Environment_rkgh2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.973495, 0.228708, 0, -0.228708, 0.973495, 0, 4.70089, 39.7026)
+fov = 98.2
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="LandNavigationRegion3D" type="NavigationRegion3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00454235, 0.0273247, 0.0690322)
+navigation_mesh = SubResource("NavigationMesh_bdiu3")
+script = ExtResource("1_7xwec")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="map/LandNavigationRegion3D"]
+transform = Transform3D(25, 0, 0, 0, 1.876, 0, 0, 0, 27.401, 0, 0, 0)
+mesh = SubResource("PlaneMesh_mqqh4")
+
+[node name="Cow" type="CharacterBody3D" parent="." node_paths=PackedStringArray("brain", "land")]
+script = ExtResource("2_gbamu")
+brain = NodePath("BrainNavigationAgent3D")
+land = NodePath("../map/LandNavigationRegion3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55315, 0)
+mesh = SubResource("BoxMesh_g78yx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cow/MeshInstance3D"]
+shape = SubResource("BoxShape3D_de1ay")
+
+[node name="BrainNavigationAgent3D" type="NavigationAgent3D" parent="Cow"]
