@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://82srgbxn0wne"]
+[gd_scene load_steps=7 format=3 uid="uid://82srgbxn0wne"]
+
+[ext_resource type="PackedScene" uid="uid://fjh8u0oig76u" path="res://Cow-Manager/Animals/cow_body_3d.tscn" id="1_38mcv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_18p6j"]
 sky_horizon_color = Color(0.617857, 0.659449, 0.703499, 1)
@@ -14,6 +16,12 @@ sky = SubResource("Sky_eussv")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_sypqf"]
+vertices = PackedVector3Array(-3.60696, 1, -4.35109, -3.60696, 1, 4.39891, 3.64304, 1, 4.39891, 3.64304, 1, -4.35109)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2myr"]
+
 [node name="World" type="Node3D"]
 
 [node name="Lighthing" type="Node3D" parent="."]
@@ -24,3 +32,18 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighthing"]
 environment = SubResource("Environment_10qck")
+
+[node name="Land" type="Node3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Land"]
+navigation_mesh = SubResource("NavigationMesh_sypqf")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Land/NavigationRegion3D"]
+transform = Transform3D(8.21391, 0, 0, 0, 1, 0, 0, 0, 9.70217, 0, 0, 0)
+mesh = SubResource("BoxMesh_b2myr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.910453, 0.413613, 0, -0.413613, 0.910453, 0, 3.94022, 7.08799)
+
+[node name="CowBody3D" parent="." instance=ExtResource("1_38mcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10716, 0)
