@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6m073njghjfg"
+path="res://.godot/imported/cowOBJ.obj-6b9b9bd4962d1d30ba642d3cc84e5559.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cowOBJ.obj-6b9b9bd4962d1d30ba642d3cc84e5559.mesh"]
+
+source_file="res://Cow-Manager/Animals/Cow/cowOBJ.obj"
+dest_files=["res://.godot/imported/cowOBJ.obj-6b9b9bd4962d1d30ba642d3cc84e5559.mesh", "res://.godot/imported/cowOBJ.obj-6b9b9bd4962d1d30ba642d3cc84e5559.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

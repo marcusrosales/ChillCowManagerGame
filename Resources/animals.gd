@@ -1,3 +1,5 @@
+# ALL ANIMALS IN GAME/CATTLE/CHICKEN/HUMAN ETC CONTAIN THESE FUNCTIONS/STATS!
+
 extends Resource
 class_name Animals
 
@@ -5,5 +7,5 @@ class_name Animals
 @export var speed: int
 
 
-func roam(speed):
-	print(speed)
+func Roam():
+	print('hello this is a test')

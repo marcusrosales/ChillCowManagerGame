@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://82srgbxn0wne"]
 
-[ext_resource type="PackedScene" uid="uid://fjh8u0oig76u" path="res://Cow-Manager/Animals/cow_body_3d.tscn" id="1_38mcv"]
+[ext_resource type="PackedScene" uid="uid://fjh8u0oig76u" path="res://Cow-Manager/Animals/Cow/cow_body_3d.tscn" id="1_38mcv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_18p6j"]
 sky_horizon_color = Color(0.617857, 0.659449, 0.703499, 1)
@@ -42,9 +42,12 @@ navigation_mesh = SubResource("NavigationMesh_sypqf")
 transform = Transform3D(8.21391, 0, 0, 0, 1, 0, 0, 0, 9.70217, 0, 0, 0)
 mesh = SubResource("BoxMesh_b2myr")
 
+[node name="CowBody3D" parent="Land" instance=ExtResource("1_38mcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527869, 2.04026)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.910453, 0.413613, 0, -0.413613, 0.910453, 0, 3.94022, 7.08799)
 
 [node name="CowBody3D" parent="." node_paths=PackedStringArray("RoamRegion") instance=ExtResource("1_38mcv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10716, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.531691, 0)
 RoamRegion = NodePath("../Land/NavigationRegion3D")

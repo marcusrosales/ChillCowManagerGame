@@ -1,9 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://fjh8u0oig76u"]
 
-[ext_resource type="Script" path="res://Cow-Manager/Animals/cow_body_3d.gd" id="1_supvf"]
+[ext_resource type="Script" path="res://Cow-Manager/Animals/Cow/cow_body_3d.gd" id="1_supvf"]
 [ext_resource type="Resource" uid="uid://ci34ctfh1u1oi" path="res://Cow-Manager/Resources/Cattle.tres" id="2_1ee22"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_iv2dl"]
+[ext_resource type="ArrayMesh" uid="uid://b6m073njghjfg" path="res://Cow-Manager/Animals/Cow/cowOBJ.obj" id="3_0pe3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tk1m3"]
 
@@ -12,9 +11,10 @@ script = ExtResource("1_supvf")
 Animal = ExtResource("2_1ee22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_iv2dl")
+mesh = ExtResource("3_0pe3e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437882, 0)
 shape = SubResource("BoxShape3D_tk1m3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

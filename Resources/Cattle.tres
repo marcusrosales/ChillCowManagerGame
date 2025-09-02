@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_ji7vr")
 health = 100
-speed = 5
+speed = 52
